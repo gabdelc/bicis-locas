@@ -1,56 +1,61 @@
-function validateForm(g){
-    
-    var nombre = document.getElementById("name").value;
-    var apellido = document.getElementById("lastname").value;
-    var email = document.getElementById(input-"email").value;
-    var password = document.getElementById("input-password").value;
-    var lista = document.getElementById("bici").selectedIndex;
-    
-    
-  if(nombre == "" || apellido =="" || email =="" || password()==false )
-  { 
-     alert("Campos incompletos");
-    return false;
-  }
+document.getElementById("input-password").setAttribute("minlength", "6"); 
 
-     else if (!/^[a-zA-Z\s]*$/).test(nombre))
-     {
-        alert("Nombre inválido");
-        return false;
-        g.preventDefault();   
-     }
+
+
+function validateForm(evt) {
+var nombre, apellido, email, contraseña;
+nombre = document.getElementById("name").value;
+apellido = document.getElementById("lastname").value;
+email = document.getElementById("input-email").value;
+contraseña = document.getElementById("input-password").value;
     
-    else if (!/^[a-zA-Z\s]*$/).test(apellido))
-    {
-        alert("Apellido inválido");
+var lista = document.getElementById("bici").selectedIndex;
+   
+     
+    if(nombre===""||apellido===""|| email===""|| contraseña==="") {
+        alert("Todos los campos son obligatorios.");
+        return false; 
+            }
+    
+    else if !(/^[a-zA-Z\s]*$/).test(nombre)){
+        alert("No es un nombre válido");
         return false;
-        g.preventDefault();
+        evt.preventDefault();
+        
     }
     
-    else if (nombre.charAt(0) != nombre.charAt(0).toUpperCase() || apellido.charAt(0) != apellido.charAt(0).toUpperCase())
-    {
-        alert ("Primera letra debe ser una mayúsculas.");
-               return false;
-        g.preventDefault();
-   }
-        
-    else if (!/([a-zA-Z0-9(._)]+[@][a-zA-Z0-9]+[.][a-zA-Z]+)/.test(email)) {
+    else if (!(/^[a-zA-Z\s]*$/).test(apellido)){
+        alert("No es un apellido válido");
+        return false;
+        evt.preventDefault();
+    }
+    
+    else if(contraseña === "password"|| contraseña==="123456"|| contraseña==="098754"){
+        alert("No es una contraseña válida.");
+        return false;
+        evt.preventDefault();
+    }
+    
+    else if (!(/\w+@\w+\.+[a-z]/).test(email)) {
         alert("No es un correo válido");
         return false;
-        g.preventDefault();
-    }
-    
-    else if(password > 6  || password === "password"|| password==="123456"|| password==="098754"){
-        alert("contraseña invalida, ingrese nueva contraseña.");
-        return false;
-        g.preventDefault();
+        evt.preventDefault();
     }
     
     
-    else if( bici == null || bici == 0 ) {
-        alert("Selecciona tu tipo de bicicleta.");
+    else if( lista == null || lista == 0 ) {
+        alert("Escoge una de la lista.");
     return false;
-        g.preventDefault();
-    }    
-     
+        evt.preventDefault();
+}
+    
+    else if (nombre.charAt(0) != nombre.charAt(0).toUpperCase()|| apellido.charAt(0) != apellido.charAt(0).toUpperCase()){
+        alert ("Primera letra en mayúsculas.");   
+               return false;
+        evt.preventDefault();
+  
+       
+    }
+    
+  
 }
